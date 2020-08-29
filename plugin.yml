@@ -3,6 +3,6 @@ author: WePlayBTB Dev Team
 version: 1.0.0
 description: For creating non-persistent, Human type NPCs
 main: BreathTakinglyBinary\npcs\NPCs
-api: 3.13.0
+api: 4.0.0
 mcpe-protocol: [361, 388, 389, 390, 407]
 website: https://github.com/BreathTakinglyBinary/NPCs

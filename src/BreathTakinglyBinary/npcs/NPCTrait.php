@@ -4,38 +4,20 @@ declare(strict_types=1);
 
 namespace BreathTakinglyBinary\npcs;
 
-use pocketmine\entity\DataPropertyManager;
 use pocketmine\entity\Entity;
-use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\FloatTag;
 use pocketmine\network\mcpe\protocol\SetActorDataPacket as SetEntityDataPacket;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
 /**
  * Trait containing methods used in various Slappers.
  */
 trait NPCTrait {
-    /** @var CompoundTag */
-    public $namedtag;
-
-    /**
-     * @return DataPropertyManager
-     */
-    abstract public function getDataPropertyManager(): DataPropertyManager;
-
-    /**
-     * @return string
-     */
-    abstract public function getNameTag(): string;
-
-    abstract public function sendNameTag(Player $player): void;
-
-    abstract public function setGenericFlag(int $flag, bool $value = true): void;
 
     public function prepareMetadata(): void {
         $this->setGenericFlag(Entity::DATA_FLAG_IMMOBILE, true);
         if (!$this->namedtag->hasTag("Scale", FloatTag::class)) {
-            $this->namedtag->setFloat("Scale", 1.0, true);
+            $this->namedtag->setFloat("Scale", 1.0);
         }
         $this->getDataPropertyManager()->setFloat(Entity::DATA_SCALE, $this->namedtag->getFloat("Scale"));
     }
